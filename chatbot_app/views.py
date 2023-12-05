@@ -10,7 +10,7 @@ from openai import OpenAI
 
 
 
-OPENAI_API_KEY = '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'
+OPENAI_API_KEY = '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'
 client = OpenAI(
     api_key=OPENAI_API_KEY
 )
