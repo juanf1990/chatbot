@@ -1,3 +1,4 @@
+import os
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 
@@ -7,13 +8,15 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from .models import Chat
 from openai import OpenAI
+from dotenv import load_dotenv
 
+load_dotenv()
 
+print(os.environ.get('OPENAI_API_KEY'))
 
-OPENAI_API_KEY = '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'
 client = OpenAI(
-    api_key=OPENAI_API_KEY
-)
+    api_key=(os.environ.get('OPENAI_API_KEY')))
+
 def ask_openai(message):
     response = client.chat.completions.create(
         model = "gpt-4",
